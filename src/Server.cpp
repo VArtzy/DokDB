@@ -32,10 +32,10 @@ int main(int argc, char* argv[]) {
         
         std::cout << "database page size: " << page_size << std::endl;
 
-        database_file_path.seekg(HEADER_SIZE + 3);
+        database_file.seekg(HEADER_SIZE + 3);
         database_file.read(buffer, 2);
 
-        unsigned short table_count = (static_cast<unsigned char>(buffer[1] | static_cast<unsigned char>(buffer[0] << 8));
+        unsigned short table_count = (static_cast<unsigned char>(buffer[1]) | static_cast<unsigned char>(buffer[0] << 8));
 
         std::cout << "number of tables: " << table_count << std::endl;
     }
